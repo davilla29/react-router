@@ -1,0 +1,61 @@
+.navbar-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer animation */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.skeleton-logo {
+  width: 120px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.skeleton-link {
+  width: 80px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
