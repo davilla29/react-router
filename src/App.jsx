@@ -1,5 +1,3 @@
-// import Home from "./pages/Home";
-// import Products from "./pages/Products";
 import {
   Route,
   createBrowserRouter,
@@ -9,7 +7,6 @@ import {
 // Lazy load pages
 import { lazy, Suspense } from "react";
 import Preloader from "./components/Preloader";
-
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
 const About = lazy(() => import("./pages/About"));
@@ -18,7 +15,6 @@ const ContactInfo = lazy(() => import("./components/ContactInfo"));
 const ContactForm = lazy(() => import("./components/ContactForm"));
 const ContactLayout = lazy(() => import("./layout/ContactLayout"));
 const NotFound = lazy(() => import("./components/NotFound"));
-import AnimatedPage from "./components/AnimatedPage";
 
 function App() {
   const router = createBrowserRouter(
@@ -28,9 +24,7 @@ function App() {
           index
           element={
             <Suspense fallback={<Preloader />}>
-              <AnimatedPage>
-                <Home />
-              </AnimatedPage>
+              <Home />
             </Suspense>
           }
         />
@@ -38,9 +32,7 @@ function App() {
           path="products"
           element={
             <Suspense fallback={<Preloader />}>
-              <AnimatedPage>
-                <Products />
-              </AnimatedPage>
+              <Products />
             </Suspense>
           }
         />
@@ -48,9 +40,7 @@ function App() {
           path="about"
           element={
             <Suspense fallback={<Preloader />}>
-              <AnimatedPage>
-                <About />
-              </AnimatedPage>
+              <About />
             </Suspense>
           }
         />
@@ -66,9 +56,7 @@ function App() {
             path="info"
             element={
               <Suspense fallback={<Preloader />}>
-                <AnimatedPage>
-                  <ContactInfo />
-                </AnimatedPage>
+                <ContactInfo />
               </Suspense>
             }
           />
@@ -76,9 +64,7 @@ function App() {
             path="form"
             element={
               <Suspense fallback={<Preloader />}>
-                <AnimatedPage>
-                  <ContactForm />
-                </AnimatedPage>
+                <ContactForm />
               </Suspense>
             }
           />
@@ -87,9 +73,7 @@ function App() {
           path="*"
           element={
             <Suspense fallback={<Preloader />}>
-              <AnimatedPage>
-                <NotFound />
-              </AnimatedPage>
+              <NotFound />
             </Suspense>
           }
         />
