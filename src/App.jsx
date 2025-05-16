@@ -4,6 +4,8 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
+import ErrorFallback from "./components/ErrorFallback";
 // Lazy load pages
 import { lazy, Suspense } from "react";
 import Preloader from "./components/Preloader";
@@ -19,69 +21,26 @@ const NotFound = lazy(() => import("./components/NotFound"));
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route
-          index
-          element={
-            <Suspense fallback={<Preloader />}>
-              <Home />
-            </Suspense>
-          }
-        />
-        <Route
-          path="products"
-          element={
-            <Suspense fallback={<Preloader />}>
-              <Products />
-            </Suspense>
-          }
-        />
-        <Route
-          path="about"
-          element={
-            <Suspense fallback={<Preloader />}>
-              <About />
-            </Suspense>
-          }
-        />
-        <Route
-          path="contact"
-          element={
-            <Suspense fallback={<Preloader />}>
-              <ContactLayout />
-            </Suspense>
-          }
-        >
-          <Route
-            path="info"
-            element={
-              <Suspense fallback={<Preloader />}>
-                <ContactInfo />
-              </Suspense>
-            }
-          />
-          <Route
-            path="form"
-            element={
-              <Suspense fallback={<Preloader />}>
-                <ContactForm />
-              </Suspense>
-            }
-          />
+      <Route path="/" element={<RootLayout />} errorElement={<ErrorFallback />}>
+        <Route index element={<Home />} />
+        <Route path="products" element={<Products />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<ContactLayout />}>
+          <Route path="info" element={<ContactInfo />} />
+          <Route path="form" element={<ContactForm />} />
         </Route>
-        <Route
-          path="*"
-          element={
-            <Suspense fallback={<Preloader />}>
-              <NotFound />
-            </Suspense>
-          }
-        />
+        <Route path="*" element={<NotFound />} />
       </Route>
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<Preloader />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ErrorBoundary>
+  );
 }
 
 export default App;
