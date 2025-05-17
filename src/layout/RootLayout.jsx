@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Preloader from "../components/Preloader"; // skeleton page loader
+import NavbarSkeleton from "../components/skeletons/NavbarSkeleton";
+const Navbar = lazy(() => import("../components/Navbar"));
 import AnimatedPage from "../components/AnimatedPage";
 
 const RootLayout = () => {
@@ -9,16 +9,16 @@ const RootLayout = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* Navbar will show its own skeleton while loading */}
+      <Suspense fallback={<NavbarSkeleton />}>
+        <Navbar />
+      </Suspense>
 
       <div className="container">
-        {/* Suspense fallback triggers only if the Outlet child is still loading */}
-        <Suspense fallback={<Preloader />}>
-          {/* AnimatedPage will animate whenever location changes */}
-          <AnimatedPage key={location.pathname}>
-            <Outlet />
-          </AnimatedPage>
-        </Suspense>
+        {/* AnimatedPage will animate whenever location changes */}
+        <AnimatedPage key={location.pathname}>
+          <Outlet />
+        </AnimatedPage>
       </div>
     </div>
   );

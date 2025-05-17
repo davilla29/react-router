@@ -15,7 +15,7 @@
 import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Contact from "../pages/Contact";
-import Preloader from "../components/Preloader";
+import Preloader from "../components/skeletons/NavbarSkeleton";
 import Preloader2 from "../components/Preloader2";
 import AnimatedPage from "../components/AnimatedPage";
 

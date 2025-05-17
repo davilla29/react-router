@@ -42,6 +42,7 @@ const NotFound = () => {
     <>
       <div className="notFoundContainer">
         <h2>404 | Page not found</h2>
+        <p>You will be automatically redirected back to the home page in:</p>
         <div className="timer">
           <CircularProgressbar
             value={(timeLeft / totalTime) * 100}
