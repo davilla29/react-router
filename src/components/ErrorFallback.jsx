@@ -14,7 +14,7 @@ export default function ErrorFallback({ error }) {
         Something went wrong!
       </h1>
       <p className="text-gray-700 mb-4">
-        {error?.message || "An unexpected error occurred."}
+        {error?.message || "An unexpected error has occurred."}
       </p>
       <button
         onClick={() => window.location.reload()}

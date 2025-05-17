@@ -16,6 +16,7 @@ import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Contact from "../pages/Contact";
 import Preloader from "../components/Preloader";
+import Preloader2 from "../components/Preloader2";
 import AnimatedPage from "../components/AnimatedPage";
 
 const ContactLayout = () => {
@@ -27,7 +28,7 @@ const ContactLayout = () => {
       <Contact />
 
       {/* Animated Outlet children only */}
-      <Suspense fallback={<Preloader />}>
+      <Suspense fallback={<Preloader2 />}>
         <AnimatedPage key={location.pathname}>
           <Outlet />
         </AnimatedPage>
