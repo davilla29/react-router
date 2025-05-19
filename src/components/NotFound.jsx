@@ -42,7 +42,7 @@ const NotFound = () => {
     <>
       <div className="notFoundContainer">
         <h2>404 | Page not found</h2>
-        <p>You will be automatically redirected back to the home page in:</p>
+        <p>You will be automatically redirected back to the in:</p>
         <div className="timer">
           <CircularProgressbar
             value={(timeLeft / totalTime) * 100}
@@ -51,7 +51,9 @@ const NotFound = () => {
           />
         </div>
 
-        <button className="notFoundBtn" onClick={() => navigate("/")}>Go Home Now</button>
+        <button className="notFoundBtn" onClick={() => navigate("/")}>
+          Go Home Now
+        </button>
       </div>
     </>
   );

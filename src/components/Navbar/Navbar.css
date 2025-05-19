@@ -1,0 +1,140 @@
+/* Base navbar styles */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar img {
+  width: 130px;
+}
+
+/* Desktop nav menu */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+  list-style: none;
+}
+
+.nav-menu li {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.get-started-btn {
+  background: #000;
+  color: #fff;
+  padding: 12px 25px;
+  border: 0;
+  outline: 0;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.get-started-btn.mobile {
+  display: none;
+  margin-top: 40px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.get-started-btn.desktop {
+  display: inline-block;
+}
+
+/* Mobile menu toggle button hidden on desktop */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  position: relative;
+  z-index: 1100;
+}
+
+.navbar button {
+  background: #000;
+  top: 1rem;
+  right: 2rem;
+  color: #fff;
+  padding: 12px 25px;
+  border: 0;
+  outline: 0;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Mobile responsive */
+@media (max-width: 868px) {
+  /* Hide desktop nav links and desktop get started */
+
+  .navbar img {
+    width: 130px;
+    margin-top: 1rem;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 90px 30px 30px 30px;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 1050;
+  }
+
+  /* Open state - fade in and slide down */
+  .nav-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-menu li {
+    margin: 20px 0;
+    padding: 5px 0;
+    font-size: 22px;
+  }
+
+  /* Show mobile get started inside menu */
+  .get-started-btn.mobile {
+    display: block;
+  }
+
+  /* Hide desktop get started on mobile */
+  .get-started-btn.desktop {
+    display: none;
+  }
+
+  /* Show mobile menu button */
+  .mobile-menu-btn {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    color: #000;
+    z-index: 1101; /* Above menu */
+  }
+}
