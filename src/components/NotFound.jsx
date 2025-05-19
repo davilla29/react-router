@@ -54,6 +54,9 @@ const NotFound = () => {
         <button className="notFoundBtn" onClick={() => navigate("/")}>
           Go Home Now
         </button>
+        <button className="notFoundBtn" onClick={() => navigate(-1)}>
+          Go to previous page
+        </button>
       </div>
     </>
   );
