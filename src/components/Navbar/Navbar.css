@@ -76,13 +76,18 @@
   cursor: pointer;
 }
 
+.navbar .mobile-menu-btn {
+  border-radius: 50%;
+  padding: 20px;
+}
+
 /* Mobile responsive */
 @media (max-width: 868px) {
   /* Hide desktop nav links and desktop get started */
 
   .navbar img {
-    width: 130px;
-    margin-top: 1rem;
+    width: 160px;
+    margin-top: 1.3rem;
   }
 
   .nav-menu {
